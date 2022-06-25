@@ -23,9 +23,6 @@
 
 
 #include "misc_types.hpp"
-#include <sead/gfx/seadTextWriter.h>
-#include <sead/gfx/seadDrawContext.h>
-#include <sead/fake/seadPrimitiveDrawer.hpp>
 
 FUNC_PTR(0x0062E140, Lp_Sys_DbgTextWriter_draw2D, void(*)(uintptr_t, agl::lyr::RenderInfo const&));
 FUNC_PTR(0x0062DC60, Lp_Sys_DbgTextWriter_drawText, void(*)(uintptr_t, agl::lyr::RenderInfo const&, DbgTextWriter::Info*));
