@@ -17,8 +17,8 @@ export MAKE_ARGS="-j8 V=1"
 # JSON to use to make .npdm
 export NPDM_JSON="qlaunch.json"
 # Additional C/C++ flags to use.
-export C_FLAGS=""
-export CXX_FLAGS=""
+export C_FLAGS="-DNNSDK"
+export CXX_FLAGS="-DNNSDK -Wno-invalid-offsetof"
 
 # AsRtld settings
 #------------------------
@@ -30,7 +30,7 @@ export MOUNT_PATH="/mnt/k"
 #------------------------
 
 # Settings for deploying over FTP. Used by the deploy-ftp.py script.
-export FTP_IP="192.168.0.235"
+export FTP_IP="192.168.0.234"
 export FTP_PORT="5000"
 export FTP_USERNAME="anonymous"
 export FTP_PASSWORD=""
