@@ -16,7 +16,7 @@ constexpr float loopHigh = 2;
 constexpr float loopStep = 0.005;
 
 static double loop = 0;
-static int player = 0;
+static int playerIdx = 0;
 static std::array<const char*, 3> playerNames = {
     "Mario",
     "Luigi",
@@ -60,8 +60,8 @@ static sead::Color4f fromHsv(float h, float s, float v) {
 HOOK_DEFINE_TRAMPOLINE(DeathSignal) {
     static void Callback(uintptr_t _this) {
 
-        player++;
-        player %= playerNames.size();
+        playerIdx++;
+        playerIdx %= playerNames.size();
         
         Orig(_this);
     }
@@ -80,7 +80,7 @@ HOOK_DEFINE_REPLACE(DbgTextWriterDraw2D) {
         info.mEx.mScale = {3,3};
         info.mEx.mColor = fromHsv(((loop - loopLow) / (loopHigh - loopLow)) * 360, 100, 100);
 
-        snprintf(info.mStrUtf8Data, sizeof(info.mStrUtf8Data), "Current player: %s", playerNames.at(player));
+        snprintf(info.mStrUtf8Data, sizeof(info.mStrUtf8Data), "Current player: %s", playerNames.at(playerIdx));
         info.mEx.mFlags |= 0x1 | 0x400;
 
         Lp_Sys_DbgTextWriter_drawText(_this, renderInfo, &info);
